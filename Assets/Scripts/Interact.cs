@@ -35,12 +35,20 @@ public class Interact : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && talkNifra)
         {
             Debug.Log(index);
-            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index++];
+            index++;
+            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && talkAda)
+        {
+            Debug.Log(index);
+            index++;
+            textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
         }
 
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log(index);
+            index = 0;
+            //talkNifra = true;
             textPopup.SetActive(false);
             textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
 
@@ -48,14 +56,15 @@ public class Interact : MonoBehaviour
                 talkNifra = false;
             
         }
-        else if (talkAda)
+        if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
+            index = 0;
+            //talkAda = true;
             textPopup.SetActive(false);
             textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                NextLine(adaLines);
-            }
+
+            if (index >= adaLines.Count)
+                talkAda = false;
         }
     
     }
@@ -64,7 +73,6 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("NPC"))
         {
-            index = 0;
             textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk."; 
             textPopup.SetActive(true);
 
@@ -72,6 +80,7 @@ public class Interact : MonoBehaviour
                 talkNifra = true;
             else if (other.gameObject.name == "Ada")
                 talkAda = true;
+                
         }
     }
 
@@ -79,8 +88,8 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("NPC"))
         {
-            //talkNifra = false;
-            //talkAda = false;
+            talkNifra = false;
+            talkAda = false;
             textPopup.SetActive(false);
         }
     }

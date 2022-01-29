@@ -28,7 +28,8 @@ public class IntroText : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                textBox.GetComponent<TextMeshProUGUI>().text = introLines[index++];
+                index++;
+                textBox.GetComponent<TextMeshProUGUI>().text = introLines[index];
             }
 
             if (index >= introLines.Count)
