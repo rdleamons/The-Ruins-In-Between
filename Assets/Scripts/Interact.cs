@@ -1,16 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEngine.UI;
 using TMPro;
-using System.Linq;
-using UnityEngine.SceneManagement;
 
 public class Interact : MonoBehaviour
 {
     public GameObject textBox;
     private int index;
+    public GameObject textPopup;
 
     private List<string> lines;
 
@@ -20,10 +17,11 @@ public class Interact : MonoBehaviour
         index = 0;
         textBox.SetActive(true);
         textBox.GetComponent<TextMeshProUGUI>().text = lines[0];
+        textPopup.SetActive(false);
     }
     private void Update()
     {
-        if (textBox.GetComponent<TextMeshProUGUI>().text == "")
+        if (textBox.GetComponent<TextMeshProUGUI>().text == " ")
         {
             textBox.gameObject.SetActive(false);
         }
@@ -40,16 +38,19 @@ public class Interact : MonoBehaviour
 
         if (index == lines.Count)
         {
-            textBox.GetComponent<TextMeshProUGUI>().text = "";
+            textBox.GetComponent<TextMeshProUGUI>().text = " ";
         }
+
+        //if (index >= lines.Count)
+          //  index = lines.Count;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("NPC"))
         {
-            textBox.GetComponent<TextMeshProUGUI>().text = "Press 'E' to talk.";
-            Debug.Log("NPC.");
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk."; 
+            textPopup.SetActive(true);
         }
     }
 }

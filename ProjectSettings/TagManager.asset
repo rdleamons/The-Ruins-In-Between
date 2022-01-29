@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Background
+  - Characters
   - Water
   - UI
   - Ground
-  - 
+  - Background
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Characters
+    uniqueID: 1194109083
+    locked: 0
+  - name: Background
+    uniqueID: 1988951197
     locked: 0
