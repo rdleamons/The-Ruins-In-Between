@@ -10,24 +10,18 @@ public class Interact : MonoBehaviour
     private int convoIndex;
     public GameObject textPopup;
 
-    private List<string> introLines;
     private List<string> nifraLines;
     private List<string> adaLines;
     private bool talkNifra;
     private bool talkAda;
-    private bool readIntro;
 
     void Start()
     {
-        readIntro = true;
-
-        introLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Intro.txt"));
         nifraLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Nifra.txt"));
         adaLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Ada.txt"));
 
         index = 0;
         textPopup.SetActive(false);
-        textBox.GetComponent<TextMeshProUGUI>().text = introLines[0];
     }
 
     private void Update()
@@ -37,32 +31,30 @@ public class Interact : MonoBehaviour
         else
             textBox.gameObject.SetActive(true);
 
-        if (readIntro)
+
+        if (Input.GetKeyDown(KeyCode.Return) && talkNifra)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-                NextLine(introLines);
+            Debug.Log(index);
+            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index++];
         }
 
-
-        if(Input.GetKeyDown(KeyCode.E))
+        if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
-            if (talkNifra)
+            Debug.Log(index);
+            textPopup.SetActive(false);
+            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
+
+            if (index >= nifraLines.Count)
+                talkNifra = false;
+            
+        }
+        else if (talkAda)
+        {
+            textPopup.SetActive(false);
+            textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                textPopup.SetActive(false);
-                textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    NextLine(nifraLines);
-                }
-            }
-            else if (talkAda)
-            {
-                textPopup.SetActive(false);
-                textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
-                if (Input.GetKeyDown(KeyCode.Return))
-                {
-                    NextLine(adaLines);
-                }
+                NextLine(adaLines);
             }
         }
     
@@ -73,7 +65,6 @@ public class Interact : MonoBehaviour
         if (other.CompareTag("NPC"))
         {
             index = 0;
-            readIntro = false;
             textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk."; 
             textPopup.SetActive(true);
 
@@ -100,7 +91,6 @@ public class Interact : MonoBehaviour
 
         if(index == lines.Count)
         {
-            readIntro = false;
             talkNifra = false;
             talkAda = false;
         }
