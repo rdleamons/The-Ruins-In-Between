@@ -20,6 +20,8 @@ public class Interact : MonoBehaviour
     public bool hasStone;
     private bool canCollect;
 
+    public PlayerMovement playMove;
+
     void Start()
     {
         nifraLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Nifra.txt"));
@@ -32,8 +34,11 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if (textBox.GetComponent<TextMeshProUGUI>().text == " ")
+        if (textBox.GetComponent<TextMeshProUGUI>().text == " " || textBox.GetComponent<TextMeshProUGUI>().text == "")
+        {
+            playMove.canMove = true;
             textBox.gameObject.SetActive(false);
+        }
         else
             textBox.gameObject.SetActive(true);
 
@@ -54,36 +59,35 @@ public class Interact : MonoBehaviour
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
             index = 0;
-            //talkNifra = true;
-            textPopup.SetActive(false);
+            playMove.canMove = false;
+            textPopup.GetComponent<TextMeshPro>().text = "Nifra";
             textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
 
-            if (index >= nifraLines.Count)
+            if (index == nifraLines.Count)
+            {
                 talkNifra = false;
-            
+            }
         }
         if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
             index = 0;
-            //talkAda = true;
-            textPopup.SetActive(false);
+            playMove.canMove = false;
+            textPopup.GetComponent<TextMeshPro>().text = "Ada";
             textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
 
             if (index >= adaLines.Count)
+            {
                 talkAda = false;
+            }
         }
 
-        if (hasStone)
-            backgroundToChange.color = Color.cyan;
-        else
-            backgroundToChange.color = Color.blue;
-
-        if(canCollect &&Input.GetKeyDown(KeyCode.E))
+        if(canCollect && Input.GetKeyDown(KeyCode.E))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 Maguffin.SetActive(false);
-                hasStone = true;
+                //hasStone = true;
+                backgroundToChange.color = Color.cyan;
             }
         }
     }
@@ -96,10 +100,13 @@ public class Interact : MonoBehaviour
             textPopup.SetActive(true);
 
             if (other.gameObject.name == "Nifra")
+            {
                 talkNifra = true;
+            }
             else if (other.gameObject.name == "Ada")
+            {
                 talkAda = true;
-                
+            }
         }
         else if (other.CompareTag("pickup"))
         {
@@ -117,6 +124,10 @@ public class Interact : MonoBehaviour
         {
             talkNifra = false;
             talkAda = false;
+        }
+        else if (other.CompareTag("pickup"))
+        {
+            canCollect = false;
         }
     }
 

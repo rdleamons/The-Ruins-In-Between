@@ -17,8 +17,6 @@ public class IntroText : MonoBehaviour
         introLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Intro.txt"));
         textBox.GetComponent<TextMeshProUGUI>().text = introLines[index];
         readIntro = true;
-
-        
     }
 
     // Update is called once per frame

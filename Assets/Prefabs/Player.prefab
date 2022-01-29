@@ -73,7 +73,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1194109083
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fca116e00492e9a47b4b82cd7da656c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5573124787700989474}
   runSpeed: 40
+  canMove: 1
 --- !u!114 &5151595157221048913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
   textPopup: {fileID: 5710392854478315234}
+  backgroundToChange: {fileID: 0}
+  Maguffin: {fileID: 0}
+  hasStone: 0
+  playMove: {fileID: 0}
 --- !u!1 &2126789963568915364
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +296,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1194109083
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &3443365304640501223
@@ -398,9 +403,10 @@ GameObject:
   - component: {fileID: 5573124787700989474}
   - component: {fileID: 2399762943109279607}
   - component: {fileID: 1140440756459632802}
+  - component: {fileID: 6562280636980352864}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,3 +492,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textBox: {fileID: 0}
+--- !u!70 &6562280636980352864
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7161661576904504489}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.9995258, y: 2.0227764}
+  m_Direction: 0
