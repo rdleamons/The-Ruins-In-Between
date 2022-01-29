@@ -9,11 +9,16 @@ public class Interact : MonoBehaviour
     private int index;
     private int convoIndex;
     public GameObject textPopup;
+    public SpriteRenderer backgroundToChange;
+    public GameObject Maguffin;
 
     private List<string> nifraLines;
     private List<string> adaLines;
     private bool talkNifra;
     private bool talkAda;
+
+    public bool hasStone;
+    private bool canCollect;
 
     void Start()
     {
@@ -22,6 +27,7 @@ public class Interact : MonoBehaviour
 
         index = 0;
         textPopup.SetActive(false);
+        hasStone = false;
     }
 
     private void Update()
@@ -66,7 +72,20 @@ public class Interact : MonoBehaviour
             if (index >= adaLines.Count)
                 talkAda = false;
         }
-    
+
+        if (hasStone)
+            backgroundToChange.color = Color.cyan;
+        else
+            backgroundToChange.color = Color.blue;
+
+        if(canCollect &&Input.GetKeyDown(KeyCode.E))
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Maguffin.SetActive(false);
+                hasStone = true;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -82,15 +101,22 @@ public class Interact : MonoBehaviour
                 talkAda = true;
                 
         }
+        else if (other.CompareTag("pickup"))
+        {
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to pick up.";
+            textPopup.SetActive(true);
+            canCollect = true;
+            
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        textPopup.SetActive(false);
         if (other.CompareTag("NPC"))
         {
             talkNifra = false;
             talkAda = false;
-            textPopup.SetActive(false);
         }
     }
 
