@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6146414757523258157}
   - component: {fileID: 7049850364121176120}
   - component: {fileID: 5151595157221048913}
+  - component: {fileID: 8834699414852128659}
   m_Layer: 3
   m_Name: 'Sprite '
   m_TagString: Untagged
@@ -161,6 +162,25 @@ MonoBehaviour:
   Maguffin: {fileID: 0}
   hasStone: 0
   playMove: {fileID: 0}
+--- !u!95 &8834699414852128659
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264942145524659553}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 410a8287975215143b88ee7aa18b7435, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2126789963568915364
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +472,7 @@ MonoBehaviour:
   m_CeilingCheck: {fileID: 5419039556885966735}
   m_CrouchDisableCollider: {fileID: 4440158563629492877}
   spriteDir: {fileID: 545628560467128860}
+  anim: {fileID: 8834699414852128659}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []

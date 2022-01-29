@@ -21,6 +21,7 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     private Vector3 m_Velocity = Vector3.zero;
+    public Animator anim;
 
     [Header("Events")]
     [Space]
@@ -126,6 +127,11 @@ public class CharacterController : MonoBehaviour
                 // ... flip the player.
                 Flip();
             }
+
+            if (move > 0)
+                anim.SetBool("isMoving", true);
+            else
+                anim.SetBool("isMoving", false);
         }
         // If the player should jump...
         if (m_Grounded && jump)
