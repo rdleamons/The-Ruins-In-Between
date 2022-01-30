@@ -78,6 +78,8 @@ public class Interact : MonoBehaviour
                 index = 0;
 
             playMove.canMove = false;
+            Debug.Log(index);
+
 
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
 
@@ -96,9 +98,10 @@ public class Interact : MonoBehaviour
             speakerName.text = "A.D.A.";
             if (hasStone)
                 index = 6;
-            else
+            else 
                 index = 0;
             playMove.canMove = false;
+            Debug.Log(index);
 
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
 
