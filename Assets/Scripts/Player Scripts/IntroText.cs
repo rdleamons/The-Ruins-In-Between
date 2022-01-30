@@ -15,7 +15,7 @@ public class IntroText : MonoBehaviour
     {
         index = 0;
         introLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Intro.txt"));
-        textBox.GetComponent<TextMeshProUGUI>().text = introLines[index];
+        textBox.GetComponentInChildren<TextMeshProUGUI>().text = introLines[index];
         readIntro = true;
     }
 
@@ -27,7 +27,7 @@ public class IntroText : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 index++;
-                textBox.GetComponent<TextMeshProUGUI>().text = introLines[index];
+                textBox.GetComponentInChildren<TextMeshProUGUI>().text = introLines[index];
             }
 
             if (index >= introLines.Count)

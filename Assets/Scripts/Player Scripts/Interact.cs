@@ -33,7 +33,7 @@ public class Interact : MonoBehaviour
 
     private void Update()
     {
-        if (textBox.GetComponent<TextMeshProUGUI>().text == " " || textBox.GetComponent<TextMeshProUGUI>().text == "")
+        if (textBox.GetComponentInChildren<TextMeshProUGUI>().text == " " || textBox.GetComponentInChildren<TextMeshProUGUI>().text == "")
         {
             playMove.canMove = true;
             textBox.gameObject.SetActive(false);
@@ -44,12 +44,12 @@ public class Interact : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) && talkNifra)
         {
             index++;
-            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
+            textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
         }
         if (Input.GetKeyDown(KeyCode.Return) && talkAda)
         {
             index++;
-            textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
+            textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
         }
 
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
@@ -60,7 +60,7 @@ public class Interact : MonoBehaviour
                 index = 0;
             playMove.canMove = false;
             textPopup.GetComponent<TextMeshPro>().text = "Nifra";
-            textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
+            textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
 
             if (!hasStone && index >= 6)
             {
@@ -79,7 +79,7 @@ public class Interact : MonoBehaviour
                 index = 0;
             playMove.canMove = false;
             textPopup.GetComponent<TextMeshPro>().text = "Ada";
-            textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
+            textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
 
             if (index >= adaLines.Count)
             {

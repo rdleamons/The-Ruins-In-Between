@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 9f5ef2337bca44442aa7a9192e185161
   - enabled: 1
+    path: Assets/Scenes/Ruins.unity
+    guid: 0a7dbe87482621043b1f97a0af91c96f
+  - enabled: 1
     path: Assets/Scenes/NatureDomain.unity
     guid: 68cfecab61c5ec94681368b1f01ced38
   - enabled: 1
     path: Assets/Scenes/TechDomain.unity
     guid: 6f6138c4af3c60b4589432abaf6c2e71
-  - enabled: 1
-    path: Assets/Scenes/Ruins.unity
-    guid: 0a7dbe87482621043b1f97a0af91c96f
   m_configObjects: {}
