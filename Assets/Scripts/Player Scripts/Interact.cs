@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using System.IO;
 using TMPro;
@@ -10,6 +11,8 @@ public class Interact : MonoBehaviour
     private int index;
     public GameObject textPopup;
     public GameObject Maguffin;
+    public GameObject stoneSprite;
+    public Sprite stoneRuby;
 
     private List<string> nifraLines;
     private List<string> adaLines;
@@ -18,6 +21,12 @@ public class Interact : MonoBehaviour
 
     public bool hasStone;
     private bool canCollect;
+    private bool canPutStone;
+    private bool helpedNifra;
+    private bool helpedAda;
+
+    public GameObject nifraUI;
+    public GameObject adaUI;
 
     public PlayerMovement playMove;
 
@@ -29,6 +38,11 @@ public class Interact : MonoBehaviour
         index = 0;
         textPopup.SetActive(false);
         hasStone = false;
+        canPutStone = false;
+        helpedAda = false;
+        helpedNifra = false;
+        nifraUI.SetActive(false);
+        adaUI.SetActive(false);
     }
 
     private void Update()
@@ -64,14 +78,14 @@ public class Interact : MonoBehaviour
                 index = 0;
 
             playMove.canMove = false;
-            
+
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
 
             if (!hasStone && index >= 6)
             {
                 talkNifra = false;
             }
-            else if(hasStone && index == nifraLines.Count)
+            else if (hasStone && index == nifraLines.Count)
             {
                 talkNifra = false;
             }
@@ -85,7 +99,7 @@ public class Interact : MonoBehaviour
             else
                 index = 0;
             playMove.canMove = false;
-            
+
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
 
             if (index >= adaLines.Count)
@@ -94,10 +108,16 @@ public class Interact : MonoBehaviour
             }
         }
 
-        if(canCollect && Input.GetKeyDown(KeyCode.E))
+        if (canCollect && Input.GetKeyDown(KeyCode.E))
         {
-            Maguffin.SetActive(false);
             hasStone = true;
+            Maguffin.SetActive(false);
+        }
+
+        if (canPutStone && Input.GetKeyDown(KeyCode.E))
+        {
+            hasStone = false;
+            stoneSprite.SetActive(false);
         }
     }
 
@@ -105,7 +125,7 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("NPC"))
         {
-            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk."; 
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk.";
             textPopup.SetActive(true);
 
             if (other.gameObject.name == "Nifra")
@@ -122,14 +142,32 @@ public class Interact : MonoBehaviour
             textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to pick up.";
             textPopup.SetActive(true);
             canCollect = true;
-            
+
+        }
+        else if (other.CompareTag("stone") && hasStone)
+        {
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to place the stone.";
+            textPopup.SetActive(true);
+            canPutStone = true;
+
+            stoneSprite = other.gameObject;
+            if (other.gameObject.name == "natureStone")
+            {
+                helpedNifra = true;
+                StartCoroutine("nifraWin");
+            }
+            else
+            {
+                helpedAda = true;
+                StartCoroutine("adaWin");
+            }
+
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         textPopup.SetActive(false);
-        //speakerName.text = "";
         if (other.CompareTag("NPC"))
         {
             talkNifra = false;
@@ -140,4 +178,22 @@ public class Interact : MonoBehaviour
             canCollect = false;
         }
     }
+    private IEnumerator nifraWin()
+    {
+        yield return new WaitForSeconds(2.0f);
+        nifraUI.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    private IEnumerator adaWin()
+    {
+        yield return new WaitForSeconds(2.0f);
+        adaUI.SetActive(true);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
 }
+
+
