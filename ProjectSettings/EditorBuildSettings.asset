@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TechDomain.unity
     guid: 6f6138c4af3c60b4589432abaf6c2e71
+  - enabled: 1
+    path: Assets/Scenes/UnderConstruction.unity
+    guid: 3c7e7df02b2acf244b8aace3a0be62fa
   m_configObjects: {}
