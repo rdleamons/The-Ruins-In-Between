@@ -56,6 +56,7 @@ public class Interact : MonoBehaviour
 
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
+            textPopup.SetActive(false);
             speakerName.text = "Nifra";
             if (hasStone)
                 index = 7;
@@ -77,6 +78,7 @@ public class Interact : MonoBehaviour
         }
         if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
+            textPopup.SetActive(false);
             speakerName.text = "Ada";
             if (hasStone)
                 index = 6;

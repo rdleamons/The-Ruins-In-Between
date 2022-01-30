@@ -128,7 +128,7 @@ public class CharacterController : MonoBehaviour
                 Flip();
             }
 
-            if (move > 0)
+            if (move != 0)
                 anim.SetBool("isMoving", true);
             else
                 anim.SetBool("isMoving", false);
