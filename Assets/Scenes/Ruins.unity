@@ -1167,6 +1167,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3887f7d7ed1baf147b5ced3c63cf0383, type: 3}
+--- !u!1 &4779975218707049272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4779975217812998759, guid: 3887f7d7ed1baf147b5ced3c63cf0383, type: 3}
+  m_PrefabInstance: {fileID: 4779975218707049271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4779975218707049273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779975218707049272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8327379ed75da914c82ed71ea68822e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    isActive: 0
+    title: Return the Power Stone
+    description: 'Find the stone that Nifra seeks and grant it to her. '
+    goal:
+      goaltype: 0
+      player: {fileID: 7161661577212898714}
+  player: {fileID: 7161661577212898714}
+  textbox: {fileID: 802604611}
 --- !u!1001 &5113707965010987017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1600,6 +1626,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+--- !u!114 &7161661577212898714 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+  m_PrefabInstance: {fileID: 7161661577212898713}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fc14404cb78b7499ca21be6812cb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8696443907789945037
 PrefabInstance:
   m_ObjectHideFlags: 0

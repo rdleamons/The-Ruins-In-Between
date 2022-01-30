@@ -9,7 +9,6 @@ public class Interact : MonoBehaviour
     private int index;
     private int convoIndex;
     public GameObject textPopup;
-    public SpriteRenderer backgroundToChange;
     public GameObject Maguffin;
 
     private List<string> nifraLines;
@@ -42,35 +41,42 @@ public class Interact : MonoBehaviour
         else
             textBox.gameObject.SetActive(true);
 
-
         if (Input.GetKeyDown(KeyCode.Return) && talkNifra)
         {
-            Debug.Log(index);
             index++;
             textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
         }
         if (Input.GetKeyDown(KeyCode.Return) && talkAda)
         {
-            Debug.Log(index);
             index++;
             textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
         }
 
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
-            index = 0;
+            if (hasStone)
+                index = 7;
+            else
+                index = 0;
             playMove.canMove = false;
             textPopup.GetComponent<TextMeshPro>().text = "Nifra";
             textBox.GetComponent<TextMeshProUGUI>().text = nifraLines[index];
 
-            if (index == nifraLines.Count)
+            if (!hasStone && index >= 6)
+            {
+                talkNifra = false;
+            }
+            else if(hasStone && index == nifraLines.Count)
             {
                 talkNifra = false;
             }
         }
         if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
-            index = 0;
+            if (hasStone)
+                index = 6;
+            else
+                index = 0;
             playMove.canMove = false;
             textPopup.GetComponent<TextMeshPro>().text = "Ada";
             textBox.GetComponent<TextMeshProUGUI>().text = adaLines[index];
@@ -83,12 +89,16 @@ public class Interact : MonoBehaviour
 
         if(canCollect && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Maguffin.SetActive(false);
-                //hasStone = true;
-                backgroundToChange.color = Color.cyan;
-            }
+            Maguffin.SetActive(false);
+            hasStone = true;
+        }
+
+        if(hasStone)
+        {
+            if (talkNifra)
+                //index = 7;
+            if (talkAda)
+                adaLines[0] = "You have the stone! Give it here!! Uh. Please?";
         }
     }
 
@@ -129,17 +139,5 @@ public class Interact : MonoBehaviour
         {
             canCollect = false;
         }
-    }
-
-    void NextLine(List<string> lines)
-    {
-        textBox.GetComponent<TextMeshProUGUI>().text = lines[index++];
-
-        if(index == lines.Count)
-        {
-            talkNifra = false;
-            talkAda = false;
-        }
-            
     }
 }
