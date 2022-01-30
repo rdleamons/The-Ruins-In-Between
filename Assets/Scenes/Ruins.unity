@@ -358,6 +358,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &535476396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 569443611080823072, guid: 2a2b7870d927dbc42bc80f1f02f4b11c, type: 3}
+  m_PrefabInstance: {fileID: 4191388979239313598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &593405510 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7049850364121176120, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
@@ -1279,6 +1290,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 569443611080823072, guid: 2a2b7870d927dbc42bc80f1f02f4b11c, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4191388978436099893, guid: 2a2b7870d927dbc42bc80f1f02f4b11c, type: 3}
       propertyPath: m_Type
       value: 0
@@ -1717,7 +1732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113707964263733531, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.938513
+      value: -18.938515
       objectReference: {fileID: 0}
     - target: {fileID: 5113707964263733531, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1932,9 +1947,13 @@ PrefabInstance:
       propertyPath: textBox
       value: 
       objectReference: {fileID: 6519362}
+    - target: {fileID: 1140440756459632802, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: speakerName
+      value: 
+      objectReference: {fileID: 535476396}
     - target: {fileID: 1392070908598460395, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1392070908598460395, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
       propertyPath: m_SortingOrder
@@ -1980,6 +1999,10 @@ PrefabInstance:
       propertyPath: playMove
       value: 
       objectReference: {fileID: 593405510}
+    - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: speakerName
+      value: 
+      objectReference: {fileID: 535476396}
     - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
       propertyPath: backgroundToChange
       value: 

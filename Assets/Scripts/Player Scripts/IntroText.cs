@@ -7,6 +7,7 @@ using TMPro;
 public class IntroText : MonoBehaviour
 {
     public GameObject textBox;
+    public TextMeshProUGUI speakerName;
     private List<string> introLines;
     private int index;
     private bool readIntro;
@@ -16,6 +17,7 @@ public class IntroText : MonoBehaviour
         index = 0;
         introLines = new List<string>(File.ReadAllLines(Application.streamingAssetsPath + "/Intro.txt"));
         textBox.GetComponentInChildren<TextMeshProUGUI>().text = introLines[index];
+        speakerName.text = "Cyrus";
         readIntro = true;
     }
 
@@ -31,7 +33,10 @@ public class IntroText : MonoBehaviour
             }
 
             if (index >= introLines.Count)
+            {
                 readIntro = false;
+            }
+                
         }
     }
 }

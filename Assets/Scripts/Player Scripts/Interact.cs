@@ -6,8 +6,8 @@ using TMPro;
 public class Interact : MonoBehaviour
 {
     public GameObject textBox;
+    public TextMeshProUGUI speakerName;
     private int index;
-    private int convoIndex;
     public GameObject textPopup;
     public GameObject Maguffin;
 
@@ -43,23 +43,27 @@ public class Interact : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return) && talkNifra)
         {
+            speakerName.text = "Nifra";
             index++;
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
         }
         if (Input.GetKeyDown(KeyCode.Return) && talkAda)
         {
+            speakerName.text = "Ada";
             index++;
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
         }
 
         if (talkNifra && Input.GetKeyDown(KeyCode.E))
         {
+            speakerName.text = "Nifra";
             if (hasStone)
                 index = 7;
             else
                 index = 0;
+
             playMove.canMove = false;
-            textPopup.GetComponent<TextMeshPro>().text = "Nifra";
+            
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = nifraLines[index];
 
             if (!hasStone && index >= 6)
@@ -73,12 +77,13 @@ public class Interact : MonoBehaviour
         }
         if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
+            speakerName.text = "Ada";
             if (hasStone)
                 index = 6;
             else
                 index = 0;
             playMove.canMove = false;
-            textPopup.GetComponent<TextMeshPro>().text = "Ada";
+            
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
 
             if (index >= adaLines.Count)
@@ -91,14 +96,6 @@ public class Interact : MonoBehaviour
         {
             Maguffin.SetActive(false);
             hasStone = true;
-        }
-
-        if(hasStone)
-        {
-            if (talkNifra)
-                //index = 7;
-            if (talkAda)
-                adaLines[0] = "You have the stone! Give it here!! Uh. Please?";
         }
     }
 
@@ -130,6 +127,7 @@ public class Interact : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         textPopup.SetActive(false);
+        //speakerName.text = "";
         if (other.CompareTag("NPC"))
         {
             talkNifra = false;
