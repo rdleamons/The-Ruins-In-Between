@@ -49,7 +49,7 @@ public class Interact : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Return) && talkAda)
         {
-            speakerName.text = "Ada";
+            speakerName.text = "A.D.A.";
             index++;
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = adaLines[index];
         }
@@ -79,7 +79,7 @@ public class Interact : MonoBehaviour
         if (talkAda && Input.GetKeyDown(KeyCode.E))
         {
             textPopup.SetActive(false);
-            speakerName.text = "Ada";
+            speakerName.text = "A.D.A.";
             if (hasStone)
                 index = 6;
             else

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8696443907857189356}
   - component: {fileID: 8696443907857189358}
   - component: {fileID: 8696443907857189359}
+  - component: {fileID: 6367342540734867770}
   m_Layer: 0
-  m_Name: SceneChange
+  m_Name: CameraChange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,3 +72,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene: 
+  currentScene:
+    m_Handle: 0
+--- !u!114 &6367342540734867770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696443907857189357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb5451a81fab264c8dbe70d6bde1664, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ruinsCam: {fileID: 0}
+  natureCam: {fileID: 0}
