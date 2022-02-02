@@ -1068,11 +1068,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &802604611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4191388979806676733, guid: 2a2b7870d927dbc42bc80f1f02f4b11c, type: 3}
-  m_PrefabInstance: {fileID: 4191388979239313598}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &842670145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2650,6 +2645,27 @@ Transform:
   m_Father: {fileID: 1485871092}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1848145360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6333541450089839214, guid: bb9ad100bd1acac45a2d04c1667dbc54, type: 3}
+  m_PrefabInstance: {fileID: 6333541449727854198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1848145363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848145360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02d154975182f4f98135bbee2cbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: []
+  npcName: 
+  textbox: {fileID: 6519362}
+  index: 0
 --- !u!1 &1869615653 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6059242635393957234, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
@@ -3751,18 +3767,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4779975218707049272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8327379ed75da914c82ed71ea68822e8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e02d154975182f4f98135bbee2cbd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quest:
-    isActive: 0
-    title: Return the Power Stone
-    description: 'Find the stone that Nifra seeks and grant it to her. '
-    goal:
-      goaltype: 0
-      player: {fileID: 7161661577212898714}
-  player: {fileID: 7161661577212898714}
-  textbox: {fileID: 802604611}
+  dialogue: []
+  npcName: 
+  textbox: {fileID: 6519362}
+  index: 0
 --- !u!1001 &5113707965010987017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3940,11 +3951,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5113707964263733531, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.938515
+      value: -18.938513
       objectReference: {fileID: 0}
     - target: {fileID: 5113707964263733531, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.957304
+      value: 0.9573059
       objectReference: {fileID: 0}
     - target: {fileID: 5113707964263733531, guid: b7fd0a22138649c4284b7b1d3230fdb3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4341,6 +4352,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
       propertyPath: adaUI
       value: 
       objectReference: {fileID: 4191388979239313599}
@@ -4360,6 +4375,10 @@ PrefabInstance:
       propertyPath: playMove
       value: 
       objectReference: {fileID: 593405510}
+    - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
       propertyPath: stoneRuby
       value: 
@@ -4484,16 +4503,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8292707530099054933, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: adaUI
+      value: 
+      objectReference: {fileID: 4191388979239313599}
+    - target: {fileID: 8292707530099054933, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: nifraUI
+      value: 
+      objectReference: {fileID: 4191388979239313600}
+    - target: {fileID: 8292707530099054933, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: textBox
+      value: 
+      objectReference: {fileID: 6519362}
+    - target: {fileID: 8292707530099054933, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: Maguffin
+      value: 
+      objectReference: {fileID: 1545771136}
+    - target: {fileID: 8292707530099054933, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
+      propertyPath: speakerName
+      value: 
+      objectReference: {fileID: 535476396}
+    m_RemovedComponents:
+    - {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
---- !u!114 &7161661577212898714 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5151595157221048913, guid: d79adcc7a1521344c88efc7bfaf97cb2, type: 3}
-  m_PrefabInstance: {fileID: 7161661577212898713}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2fc14404cb78b7499ca21be6812cb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

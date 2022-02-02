@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6146414757523258157}
   - component: {fileID: 7049850364121176120}
   - component: {fileID: 5151595157221048913}
+  - component: {fileID: 8292707530099054933}
   - component: {fileID: 8834699414852128659}
   m_Layer: 3
   m_Name: 'Sprite '
@@ -160,8 +161,34 @@ MonoBehaviour:
   speakerName: {fileID: 0}
   textPopup: {fileID: 5710392854478315234}
   Maguffin: {fileID: 0}
+  stoneSprite: {fileID: 0}
+  stoneRuby: {fileID: 0}
   hasStone: 0
+  nifraUI: {fileID: 0}
+  adaUI: {fileID: 0}
   playMove: {fileID: 0}
+--- !u!114 &8292707530099054933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264942145524659553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6fe6479cbdd2948a933ae1509d1e0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npc: {fileID: 0}
+  speakerName: {fileID: 0}
+  textPopup: {fileID: 5710392854478315234}
+  Maguffin: {fileID: 0}
+  stoneSprite: {fileID: 0}
+  stoneRuby: {fileID: 0}
+  hasStone: 0
+  nifraUI: {fileID: 0}
+  adaUI: {fileID: 0}
+  playMove: {fileID: 7049850364121176120}
 --- !u!95 &8834699414852128659
 Animator:
   serializedVersion: 3
