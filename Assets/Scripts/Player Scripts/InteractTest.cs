@@ -8,7 +8,6 @@ public class InteractTest : MonoBehaviour
 {
     public NPC npc;
     public TextMeshProUGUI speakerName;
-    private int index;
     public GameObject textPopup;
     public GameObject Maguffin;
     public GameObject stoneSprite;
@@ -17,6 +16,7 @@ public class InteractTest : MonoBehaviour
     public GameObject textBox;
 
     public bool hasStone;
+    private bool canCollect;
     private bool talkNPC;
 
     public GameObject nifraUI;
@@ -26,9 +26,9 @@ public class InteractTest : MonoBehaviour
 
     void Start()
     {
-        index = 0;
         textPopup.SetActive(false);
         hasStone = false;
+        canCollect = false;
         nifraUI.SetActive(false);
         adaUI.SetActive(false);
     }
@@ -51,16 +51,28 @@ public class InteractTest : MonoBehaviour
 
         if (talkNPC && Input.GetKeyDown(KeyCode.E))
         {
+            if (hasStone)
+            {
+                npc.index = 7;
+                npc.maxIndex = 14;
+            }
+            else
+            {
+                npc.index = 0;
+                npc.maxIndex = 6;
+            }
+                
             textPopup.SetActive(false);
             speakerName.text = npc.npcName;
-            if (hasStone)
-                index = 7;
-            else
-                index = 0;
-
             playMove.canMove = false;
 
             textBox.GetComponentInChildren<TextMeshProUGUI>().text = npc.dialogue[npc.index];
+        }
+
+        if (canCollect && Input.GetKeyDown(KeyCode.E))
+        {
+            hasStone = true;
+            Maguffin.SetActive(false);
         }
     }
 
@@ -74,6 +86,13 @@ public class InteractTest : MonoBehaviour
             textPopup.SetActive(true);
 
             talkNPC = true;
+        }
+        else if (other.CompareTag("pickup"))
+        {
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to pick up.";
+            textPopup.SetActive(true);
+            canCollect = true;
+
         }
     }
 

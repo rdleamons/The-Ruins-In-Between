@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
 
     public GameObject textbox;
     public int index;
+    public int maxIndex;
 
     void Start()
     {
@@ -26,7 +27,11 @@ public class NPC : MonoBehaviour
 
     public void nextLine()
     {
-        index++; 
-        textbox.GetComponentInChildren<TextMeshProUGUI>().text = dialogue[index];
+        if(index != maxIndex)
+        {
+            index++;
+            textbox.GetComponentInChildren<TextMeshProUGUI>().text = dialogue[index];
+        }
+        
     }
 }
