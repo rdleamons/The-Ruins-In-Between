@@ -33,6 +33,7 @@ public class InteractTest : MonoBehaviour
         canPutStone = false;
         nifraUI.SetActive(false);
         adaUI.SetActive(false);
+        //npc.npcImage.SetActive(false);
     }
 
     private void Update()
@@ -41,6 +42,7 @@ public class InteractTest : MonoBehaviour
         {
             playMove.canMove = true;
             textBox.gameObject.SetActive(false);
+            npc.npcImage.SetActive(false);
         }
         else
             textBox.gameObject.SetActive(true);
@@ -63,7 +65,8 @@ public class InteractTest : MonoBehaviour
                 npc.index = 0;
                 npc.maxIndex = 6;
             }
-                
+
+            npc.npcImage.SetActive(true);
             textPopup.SetActive(false);
             speakerName.text = npc.npcName;
             playMove.canMove = false;

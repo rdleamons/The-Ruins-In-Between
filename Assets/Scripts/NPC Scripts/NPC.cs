@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour
 {
     public List<string> dialogue;
     public string npcName;
+    public GameObject npcImage;
 
     public GameObject textbox;
     public int index;
@@ -17,6 +18,7 @@ public class NPC : MonoBehaviour
     {
         index = 0;  
         npcName = this.name;
+        npcImage.SetActive(false);
         loadLines();
     }
 
