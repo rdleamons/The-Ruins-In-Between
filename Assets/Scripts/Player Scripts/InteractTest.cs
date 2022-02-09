@@ -15,6 +15,7 @@ public class InteractTest : MonoBehaviour
 
     public GameObject textBox;
 
+    private bool canPutStone;
     public bool hasStone;
     private bool canCollect;
     private bool talkNPC;
@@ -29,6 +30,7 @@ public class InteractTest : MonoBehaviour
         textPopup.SetActive(false);
         hasStone = false;
         canCollect = false;
+        canPutStone = false;
         nifraUI.SetActive(false);
         adaUI.SetActive(false);
     }
@@ -74,6 +76,14 @@ public class InteractTest : MonoBehaviour
             hasStone = true;
             Maguffin.SetActive(false);
         }
+
+        if (canPutStone && Input.GetKeyDown(KeyCode.E))
+        {
+            hasStone = false;
+            stoneSprite.SetActive(false);
+
+            StartCoroutine("Win");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -94,15 +104,36 @@ public class InteractTest : MonoBehaviour
             canCollect = true;
 
         }
+        else if (other.CompareTag("stone") && hasStone)
+        {
+            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to place the stone.";
+            textPopup.SetActive(true);
+            canPutStone = true;
+
+            stoneSprite = other.gameObject;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         textPopup.SetActive(false);
         if (other.CompareTag("NPC"))
-        {
             talkNPC = false;
-        }
+        else if (other.CompareTag("pickup"))
+            canCollect = false; 
+    }
+
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        if (stoneSprite.name == "natureStone")
+            nifraUI.SetActive(true);
+        else if (stoneSprite.name == "techStone")
+            adaUI.SetActive(true);
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
 }
