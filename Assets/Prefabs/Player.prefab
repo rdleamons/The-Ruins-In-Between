@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4440158563629492877}
   - component: {fileID: 6146414757523258157}
   - component: {fileID: 7049850364121176120}
-  - component: {fileID: 5151595157221048913}
   - component: {fileID: 8292707530099054933}
+  - component: {fileID: 1376881306316600281}
   - component: {fileID: 8834699414852128659}
   m_Layer: 3
   m_Name: 'Sprite '
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1194109083
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -4165992012063087115, guid: daafa80207e958841bbd26a824235403, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.26801872}
+  m_Offset: {x: 0, y: 0.9886017}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -112,7 +112,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4639626}
+  m_Size: {x: 1, y: 1.9720159}
   m_EdgeRadius: 0
 --- !u!58 &6146414757523258157
 CircleCollider2D:
@@ -127,7 +127,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.49713123}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5028688
 --- !u!114 &7049850364121176120
@@ -145,28 +145,6 @@ MonoBehaviour:
   controller: {fileID: 5573124787700989474}
   runSpeed: 40
   canMove: 1
---- !u!114 &5151595157221048913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1264942145524659553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2fc14404cb78b7499ca21be6812cb94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox: {fileID: 0}
-  speakerName: {fileID: 0}
-  textPopup: {fileID: 5710392854478315234}
-  Maguffin: {fileID: 0}
-  stoneSprite: {fileID: 0}
-  stoneRuby: {fileID: 0}
-  hasStone: 0
-  nifraUI: {fileID: 0}
-  adaUI: {fileID: 0}
-  playMove: {fileID: 0}
 --- !u!114 &8292707530099054933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,15 +158,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npc: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &1376881306316600281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264942145524659553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a793ae71c07bf642a30302157ebf85f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   speakerName: {fileID: 0}
-  textPopup: {fileID: 5710392854478315234}
+  textPopup: {fileID: 0}
   Maguffin: {fileID: 0}
   stoneSprite: {fileID: 0}
   stoneRuby: {fileID: 0}
+  textBox: {fileID: 0}
+  canPutStone: 0
   hasStone: 0
+  canCollect: 0
+  talkNPC: 0
   nifraUI: {fileID: 0}
   adaUI: {fileID: 0}
-  playMove: {fileID: 7049850364121176120}
+  playMove: {fileID: 0}
 --- !u!95 &8834699414852128659
 Animator:
   serializedVersion: 3
@@ -302,7 +297,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.04}
+  m_AnchoredPosition: {x: 0, y: 2.57}
   m_SizeDelta: {x: 10, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &6801963257382061163

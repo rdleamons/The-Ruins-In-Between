@@ -6,7 +6,6 @@ using TMPro;
 
 public class Player : MonoBehaviour
 {
-    public NPC npc;
     public TextMeshProUGUI speakerName;
     public GameObject textPopup;
     public GameObject Maguffin;
@@ -15,13 +14,25 @@ public class Player : MonoBehaviour
 
     public GameObject textBox;
 
-    private bool canPutStone;
+    public bool canPutStone;
     public bool hasStone;
-    private bool canCollect;
-    private bool talkNPC;
+    public bool canCollect;
+    public bool talkNPC;
 
     public GameObject nifraUI;
     public GameObject adaUI;
+    public GameObject objectUI;
 
     public PlayerMovement playMove;
+
+    void Start()
+    {
+        textPopup.SetActive(false);
+        hasStone = false;
+        canCollect = false;
+        canPutStone = false;
+        nifraUI.SetActive(false);
+        adaUI.SetActive(false);
+        objectUI.SetActive(false);
+    }
 }

@@ -7,55 +7,33 @@ using TMPro;
 public class InteractTest : MonoBehaviour
 {
     public NPC npc;
-    public TextMeshProUGUI speakerName;
-    public GameObject textPopup;
-    public GameObject Maguffin;
-    public GameObject stoneSprite;
-    public Sprite stoneRuby;
-
-    public GameObject textBox;
-
-    private bool canPutStone;
-    public bool hasStone;
-    private bool canCollect;
-    private bool talkNPC;
-
-    public GameObject nifraUI;
-    public GameObject adaUI;
-
-    public PlayerMovement playMove;
+    public Player player;
 
     void Start()
     {
-        textPopup.SetActive(false);
-        hasStone = false;
-        canCollect = false;
-        canPutStone = false;
-        nifraUI.SetActive(false);
-        adaUI.SetActive(false);
-        //npc.npcImage.SetActive(false);
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (textBox.GetComponentInChildren<TextMeshProUGUI>().text == " " || textBox.GetComponentInChildren<TextMeshProUGUI>().text == "")
+        if (player.textBox.GetComponentInChildren<TextMeshProUGUI>().text == " " || player.textBox.GetComponentInChildren<TextMeshProUGUI>().text == "")
         {
-            playMove.canMove = true;
-            textBox.gameObject.SetActive(false);
+            player.playMove.canMove = true;
+            player.textBox.gameObject.SetActive(false);
             npc.npcImage.SetActive(false);
         }
         else
-            textBox.gameObject.SetActive(true);
+            player.textBox.gameObject.SetActive(true);
 
-        if (Input.GetKeyDown(KeyCode.Return) && talkNPC)
+        if (Input.GetKeyDown(KeyCode.Return) && player.talkNPC)
         {
-            speakerName.text = npc.npcName;
+            player.speakerName.text = npc.npcName;
             npc.nextLine();
         }
 
-        if (talkNPC && Input.GetKeyDown(KeyCode.E))
+        if (player.talkNPC && Input.GetKeyDown(KeyCode.E))
         {
-            if (hasStone)
+            if (player.hasStone)
             {
                 npc.index = 7;
                 npc.maxIndex = 14;
@@ -67,23 +45,24 @@ public class InteractTest : MonoBehaviour
             }
 
             npc.npcImage.SetActive(true);
-            textPopup.SetActive(false);
-            speakerName.text = npc.npcName;
-            playMove.canMove = false;
+            player.textPopup.SetActive(false);
+            player.speakerName.text = npc.npcName;
+            player.playMove.canMove = false;
 
-            textBox.GetComponentInChildren<TextMeshProUGUI>().text = npc.dialogue[npc.index];
+            player.textBox.GetComponentInChildren<TextMeshProUGUI>().text = npc.dialogue[npc.index];
         }
 
-        if (canCollect && Input.GetKeyDown(KeyCode.E))
+        if (player.canCollect && Input.GetKeyDown(KeyCode.E))
         {
-            hasStone = true;
-            Maguffin.SetActive(false);
+            player.hasStone = true;
+            player.Maguffin.SetActive(false);
+            StartCoroutine("ShowObject");
         }
 
-        if (canPutStone && Input.GetKeyDown(KeyCode.E))
+        if (player.canPutStone && Input.GetKeyDown(KeyCode.E))
         {
-            hasStone = false;
-            stoneSprite.SetActive(false);
+            player.hasStone = false;
+            player.stoneSprite.SetActive(false);
 
             StartCoroutine("Win");
         }
@@ -94,46 +73,55 @@ public class InteractTest : MonoBehaviour
         if (other.CompareTag("NPC"))
         {
             npc = other.gameObject.GetComponent<NPC>();
-            speakerName.text = npc.npcName;
-            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk.";
-            textPopup.SetActive(true);
+            player.speakerName.text = npc.npcName;
+            player.textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to talk.";
+            player.textPopup.SetActive(true);
 
-            talkNPC = true;
+            player.talkNPC = true;
         }
         else if (other.CompareTag("pickup"))
         {
-            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to pick up.";
-            textPopup.SetActive(true);
-            canCollect = true;
+            player.textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to pick up.";
+            player.textPopup.SetActive(true);
+            player.canCollect = true;
 
         }
-        else if (other.CompareTag("stone") && hasStone)
+        else if (other.CompareTag("stone") && player.hasStone)
         {
-            textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to place the stone.";
-            textPopup.SetActive(true);
-            canPutStone = true;
+            player.textPopup.GetComponent<TextMeshPro>().text = "Press 'E' to place the stone.";
+            player.textPopup.SetActive(true);
+            player.canPutStone = true;
 
-            stoneSprite = other.gameObject;
+            player.stoneSprite = other.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        textPopup.SetActive(false);
+        player.textPopup.SetActive(false);
         if (other.CompareTag("NPC"))
-            talkNPC = false;
+            player.talkNPC = false;
         else if (other.CompareTag("pickup"))
-            canCollect = false; 
+            player.canCollect = false; 
+    }
+
+    private IEnumerator ShowObject()
+    {
+        player.playMove.canMove = false;
+        player.objectUI.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        player.objectUI.SetActive(false);
+        player.playMove.canMove = false;
     }
 
     private IEnumerator Win()
     {
         yield return new WaitForSeconds(2.0f);
 
-        if (stoneSprite.name == "natureStone")
-            nifraUI.SetActive(true);
-        else if (stoneSprite.name == "techStone")
-            adaUI.SetActive(true);
+        if (player.stoneSprite.name == "natureStone")
+            player.nifraUI.SetActive(true);
+        else if (player.stoneSprite.name == "techStone")
+            player.adaUI.SetActive(true);
 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

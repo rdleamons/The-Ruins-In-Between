@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4779975217812998757}
   - component: {fileID: 4779975217812998758}
   - component: {fileID: 4779975217812998756}
+  - component: {fileID: 3447911724373831056}
   m_Layer: 3
   m_Name: Nifra
   m_TagString: NPC
@@ -109,3 +110,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.777943, y: 6.4603844}
   m_EdgeRadius: 0
+--- !u!114 &3447911724373831056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4779975217812998759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02d154975182f4f98135bbee2cbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: []
+  npcName: 
+  npcImage: {fileID: 0}
+  textbox: {fileID: 0}
+  index: 0
+  maxIndex: 0

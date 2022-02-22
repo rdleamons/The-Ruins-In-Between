@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6333541450089839213}
   - component: {fileID: 6333541450089839212}
   - component: {fileID: 6333541450089839215}
+  - component: {fileID: 1325212765121394397}
   m_Layer: 3
   m_Name: Ada
   m_TagString: NPC
@@ -109,3 +110,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 3.75}
   m_EdgeRadius: 0
+--- !u!114 &1325212765121394397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333541450089839214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e02d154975182f4f98135bbee2cbd2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: []
+  npcName: 
+  npcImage: {fileID: 0}
+  textbox: {fileID: 0}
+  index: 0
+  maxIndex: 0
