@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public bool hasStone;
     public bool canCollect;
     public bool talkNPC;
+    public bool canTravel;
 
     public GameObject nifraUI;
     public GameObject adaUI;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         hasStone = false;
         canCollect = false;
         canPutStone = false;
+        canTravel = false;
         nifraUI.SetActive(false);
         adaUI.SetActive(false);
         objectUI.SetActive(false);
