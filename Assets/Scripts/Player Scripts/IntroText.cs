@@ -11,6 +11,7 @@ public class IntroText : MonoBehaviour
     private List<string> introLines;
     private int index;
     private bool readIntro;
+    public PlayerMovement playMove;
 
     void Start()
     {
@@ -26,13 +27,15 @@ public class IntroText : MonoBehaviour
     {
         if (readIntro)
         {
+            playMove.canMove = false;
+
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 index++;
                 textBox.GetComponentInChildren<TextMeshProUGUI>().text = introLines[index];
             }
 
-            if (index >= introLines.Count)
+            if (index >= introLines.Count - 1)
             {
                 readIntro = false;
             }

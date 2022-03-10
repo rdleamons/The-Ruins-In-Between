@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     }
     public void LoadGame()
     {
-        SceneManager.LoadScene("Village");
+        SceneManager.LoadScene("VillageOpen");
     }
 
     public void Credits()
