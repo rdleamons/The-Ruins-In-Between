@@ -8,6 +8,7 @@ TagManager:
   - pickup
   - stone
   - levelTransition
+  - bounds
   layers:
   - Default
   - TransparentFX

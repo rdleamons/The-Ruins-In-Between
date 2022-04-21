@@ -16,6 +16,16 @@ public class InteractTest : MonoBehaviour
 
     private void Update()
     {
+        // Lantern control
+        if (player.hasLantern)
+        {
+            player.lantern.SetActive(true);
+        }
+        else if (!player.hasLantern)
+        {
+            player.lantern.SetActive(false);
+        }
+
         if (player.textBox.GetComponentInChildren<TextMeshProUGUI>().text == " " || player.textBox.GetComponentInChildren<TextMeshProUGUI>().text == "")
         {
             player.playMove.canMove = true;
@@ -33,15 +43,36 @@ public class InteractTest : MonoBehaviour
 
         if (player.talkNPC && Input.GetKeyDown(KeyCode.E))
         {
-            if (player.hasStone)
+            if(npc.name == "Nifra" || npc.name == "Ada")
             {
-                npc.index = 7;
-                npc.maxIndex = 14;
+                if (player.hasStone)
+                {
+                    npc.index = 7;
+                    npc.maxIndex = 14;
+                }
+                else
+                {
+                    npc.index = 0;
+                    npc.maxIndex = 6;
+                }
             }
-            else
+
+            if(npc.name == "NPC")
             {
-                npc.index = 0;
-                npc.maxIndex = 6;
+                if (!player.hasLantern)
+                {
+                    npc.index = 0;
+                    npc.maxIndex = 3;
+                    player.hasLantern = true;
+                    PlayerPrefs.SetInt("hasLantern", player.hasLantern ? 1 : 0);
+                    PlayerPrefs.Save();
+                    
+                }
+                else
+                {
+                    npc.index = 4;
+                    npc.maxIndex = 7;
+                }
             }
 
             npc.npcImage.SetActive(true);
@@ -66,6 +97,8 @@ public class InteractTest : MonoBehaviour
 
             StartCoroutine("Win");
         }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -94,11 +127,26 @@ public class InteractTest : MonoBehaviour
 
             player.stoneSprite = other.gameObject;
         }
+        else if (other.CompareTag("bounds"))
+        {
+            if(!player.hasLantern)
+            {
+                player.speakerName.text = "Cyrus";
+                player.textBox.GetComponentInChildren<TextMeshProUGUI>().text = "It's too dark. I should find a lantern.";
+            }
+            else
+            {
+                player.textPopup.GetComponent<TextMeshPro>().text = "Press 'L' to use your lantern.";
+                player.textPopup.SetActive(true);
+                other.GetComponent<BoxCollider2D>().enabled = false;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         player.textPopup.SetActive(false);
+        player.textBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
         if (other.CompareTag("NPC"))
             player.talkNPC = false;
         else if (other.CompareTag("pickup"))

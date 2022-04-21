@@ -177,6 +177,7 @@ MonoBehaviour:
   textPopup: {fileID: 0}
   Maguffin: {fileID: 0}
   stoneSprite: {fileID: 0}
+  lantern: {fileID: 2988985550515059429}
   stoneRuby: {fileID: 0}
   textBox: {fileID: 0}
   canPutStone: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   canCollect: 0
   talkNPC: 0
   canTravel: 0
+  hasLantern: 0
   nifraUI: {fileID: 0}
   adaUI: {fileID: 0}
   objectUI: {fileID: 0}
@@ -200,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4292171dffaed4443846ef668cd9e344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lanternLight: {fileID: 0}
 --- !u!95 &8834699414852128659
 Animator:
   serializedVersion: 3

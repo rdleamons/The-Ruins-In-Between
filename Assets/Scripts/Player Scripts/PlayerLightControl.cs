@@ -5,18 +5,20 @@ using UnityEngine.Experimental.Rendering.LWRP;
 
 public class PlayerLightControl : MonoBehaviour
 {
+    private Player player;
     public UnityEngine.Experimental.Rendering.Universal.Light2D lanternLight;
 
     // Start is called before the first frame update
     void Start()
     {
         lanternLight.enabled = false;
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (player.hasLantern && Input.GetKeyDown(KeyCode.L))
             toggleLantern(lanternLight);
     }
 
